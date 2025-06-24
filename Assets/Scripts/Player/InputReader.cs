@@ -11,6 +11,7 @@ namespace Player
         private float _directionVertical;
 
         private bool _isDashing = false;
+        private bool _isInterect = false;
 
         private void Update()
         {
@@ -20,6 +21,11 @@ namespace Player
             if ((_directionHorizontal != 0 || _directionVertical != 0) && Input.GetKeyDown(KeyCode.Space))
             {
                 _isDashing = true;
+            }
+            
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                _isInterect = true;
             }
         }
 
@@ -33,6 +39,13 @@ namespace Player
             bool isDashing = _isDashing;
             _isDashing = false;
             return isDashing;
+        }
+
+        public bool IsInterect()
+        {
+            bool isInterect = _isInterect;
+            _isInterect = false;
+            return isInterect;
         }
     }
 }

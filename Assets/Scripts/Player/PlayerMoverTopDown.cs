@@ -1,3 +1,4 @@
+using Level;
 using UnityEngine;
 
 namespace Player
@@ -14,33 +15,17 @@ namespace Player
 
         private Rigidbody2D _rigidbody2D;
         private PlayerAnimator _playerAnimator;
-        private CollisionHandler _collisionHandler;
+        
         
         private bool _isTurnRight = true;
-        private bool _isInterect = false;
-        private GateExit _gateExit;
+        
         
         private void Awake()
         {
             _rigidbody2D = GetComponent<Rigidbody2D>();
             _playerAnimator = GetComponent<PlayerAnimator>();
-            _collisionHandler = GetComponent<CollisionHandler>();
         }
-
-        private void OnEnable()
-        {
-            _collisionHandler.GateExitReached += OnGateExitReached;
-        }
-
-        private void OnDisable()
-        {
-            _collisionHandler.GateExitReached -= OnGateExitReached;
-        }
-
-        private void OnGateExitReached(GateExit gateExit)
-        {
-            _gateExit = gateExit;
-        }
+        
 
         public void Move(Vector2 moveDirection)
         {

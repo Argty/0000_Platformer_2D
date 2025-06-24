@@ -1,16 +1,16 @@
+using System.Linq;
+using Level;
 using UnityEngine;
 
-public class GateExit : MonoBehaviour
+public class GateExit : MonoBehaviour, IInterectable
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Switch[] _switches;
 
-    // Update is called once per frame
-    void Update()
+    public void Interact()
     {
-        
+        if (_switches.All(s => s.IsActive))
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
